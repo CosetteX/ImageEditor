@@ -18,13 +18,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     App/main.cpp \
     Model/imagemodel.cpp \
+    Parameter/parameter.cpp \
     View/mainwindow.cpp \
+    ViewModel/Commands/viewmodelcommand.cpp \
     ViewModel/imageviewmodel.cpp
 
 HEADERS += \
     Common/etl.h \
     Model/imagemodel.h \
+    Parameter/parameter.h \
     View/mainwindow.h \
+    ViewModel/Commands/viewmodelcommand.h \
     ViewModel/imageviewmodel.h
 
 FORMS += \

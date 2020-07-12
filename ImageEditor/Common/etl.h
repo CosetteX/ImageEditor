@@ -18,23 +18,27 @@ typedef unsigned char  uchar;
 
 //command
 
-/*
+
 class ICommandParameter
 {
 };
-*/
 
 class ICommandBase
 {
 public:
-    //virtual void SetParameter(const std::shared_ptr<ICommandParameter>& param) = 0;
-    virtual void SetParameter(const std::any& param) = 0;
+    ~ICommandBase() {}
+    void SetParameter(const std::shared_ptr<ICommandParameter>& parameter)
+    {
+        params = parameter;
+    }
     virtual void Exec() = 0;
-/*
-virtual std::shared_ptr<ICommandBase> get_Undo() = 0;
-virtual std::shared_ptr<ICommandBase> get_Redo() = 0;
-//use make_shared, then the virtual destructor is not necessary. (RAII)
-*/
+
+protected:
+    template<typename T>
+    std::shared_ptr<T> GetParameter() { return std::static_pointer_cast<T>(params); }
+
+private:
+    std::shared_ptr<ICommandParameter> params;
 };
 
 class CommandManager
