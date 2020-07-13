@@ -14,10 +14,10 @@ public:
 class BlurParameter : public ICommandParameter
 {
 public:
-    explicit BlurParameter(int ksize, int anchor) : ksize(ksize), anchor(anchor) {}
+    explicit BlurParameter(int ksize = 3, int anchor = -1) : ksize(ksize), anchor(anchor) {}
 
-    int ksize = 3;
-    int anchor = -1;
+    int ksize;
+    int anchor;
 };
 
 #endif // PARAMETER_H

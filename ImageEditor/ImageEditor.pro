@@ -16,20 +16,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    App/app.cpp \
     App/main.cpp \
+    Common/utils.cpp \
     Model/imagemodel.cpp \
     Parameter/parameter.cpp \
+    View/viewnotification.cpp \
     View/mainwindow.cpp \
-    ViewModel/Commands/viewmodelcommand.cpp \
-    ViewModel/imageviewmodel.cpp
+    View/view.cpp \
+    ViewModel/viewmodelcommand.cpp \
+    ViewModel/imageviewmodel.cpp \
+    ViewModel/viewmodelnotification.cpp
 
 HEADERS += \
+    App/app.h \
     Common/etl.h \
+    Common/utils.h \
     Model/imagemodel.h \
     Parameter/parameter.h \
+    View/viewnotification.h \
     View/mainwindow.h \
-    ViewModel/Commands/viewmodelcommand.h \
-    ViewModel/imageviewmodel.h
+    View/view.h \
+    ViewModel/viewmodelcommand.h \
+    ViewModel/imageviewmodel.h \
+    ViewModel/viewmodelnotification.h
 
 FORMS += \
     View/mainwindow.ui

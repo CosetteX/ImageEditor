@@ -1,17 +1,17 @@
 #ifndef VIEWMODELCOMMAND_H
 #define VIEWMODELCOMMAND_H
 
-#include "../../Common/etl.h"
+#include "Common/etl.h"
 
 class ImageViewModel;
 
 class ViewModelCommand : public ICommandBase
 {
 public:
-    ViewModelCommand(std::shared_ptr<ImageViewModel> vm);
+    ViewModelCommand(ImageViewModel *vm);
 
 protected:
-    std::weak_ptr<ImageViewModel> viewModel;   // 使用weak_ptr避免循环引用问题，导致资源得不到释放
+    ImageViewModel *viewModel;   // 这里不能使用shared_ptr或者weak_ptr智能指针
 };
 
 class OpenFileCommand : public ViewModelCommand

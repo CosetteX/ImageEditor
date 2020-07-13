@@ -3,7 +3,7 @@
 
 #include <opencv2/opencv.hpp>
 #include <string>
-#include "../Common/etl.h"
+#include "Common/etl.h"
 
 class ImageModel : public Proxy_CommandNotification<ImageModel>
 {
@@ -16,6 +16,9 @@ public:
     void Sharp();
     void Gray();
     void Blur(int ksize, int anchor);
+
+    void Update();
+    cv::Mat GetImage();
 private:
     cv::Mat currentImage;
     cv::Mat originImage;

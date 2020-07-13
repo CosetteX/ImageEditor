@@ -1,10 +1,10 @@
 #include "viewmodelcommand.h"
-#include "../imageviewmodel.h"
-#include "../../Parameter/parameter.h"
+#include "ViewModel/imageviewmodel.h"
+#include "Parameter/parameter.h"
 
 using namespace  std;
 
-ViewModelCommand::ViewModelCommand(std::shared_ptr<ImageViewModel> vm)
+ViewModelCommand::ViewModelCommand(ImageViewModel *vm)
     : viewModel(vm)
 {
 
@@ -13,27 +13,27 @@ ViewModelCommand::ViewModelCommand(std::shared_ptr<ImageViewModel> vm)
 void OpenFileCommand::Exec()
 {
     string path = GetParameter<StringParameter>()->str;
-    viewModel.lock()->ExecOpenFileCommand(path);
+    viewModel->ExecOpenFileCommand(path);
 }
 
 void SaveFileCommand::Exec()
 {
     string path = GetParameter<StringParameter>()->str;
-    viewModel.lock()->ExecSaveFileCommand(path);
+    viewModel->ExecSaveFileCommand(path);
 }
 
 void SharpCommand::Exec()
 {
-    viewModel.lock()->ExecSharpCommand();
+    viewModel->ExecSharpCommand();
 }
 
 void GrayCommand::Exec()
 {
-    viewModel.lock()->ExecGrayCommand();
+    viewModel->ExecGrayCommand();
 }
 
 void BlurCommand::Exec()
 {
     auto param = GetParameter<BlurParameter>();
-    viewModel.lock()->ExecBlurCommand(param->ksize, param->anchor);
+    viewModel->ExecBlurCommand(param->ksize, param->anchor);
 }
