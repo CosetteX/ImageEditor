@@ -10,6 +10,7 @@ class SaveFileCommand;
 class SharpCommand;
 class GrayCommand;
 class BlurCommand;
+class RotateCommand;
 
 class ImageViewModel : public Proxy_CommandNotification<ImageViewModel>
 {
@@ -22,6 +23,7 @@ public:
     std::shared_ptr<ICommandBase> GetSharpCommand();
     std::shared_ptr<ICommandBase> GetGrayCommand();
     std::shared_ptr<ICommandBase> GetBlurCommand();
+    std::shared_ptr<ICommandBase> GetRotateCommand();
     std::shared_ptr<QImage> GetImage();
 
     void SetModel(std::shared_ptr<ImageModel> model);
@@ -30,6 +32,7 @@ public:
     void ExecSharpCommand();
     void ExecGrayCommand();
     void ExecBlurCommand(int ksize, int anchor);
+    void ExecRotateCommand(int angle);
 
     void UpdateImage();
 private:
@@ -39,6 +42,7 @@ private:
     std::shared_ptr<SharpCommand> sharpCommand;
     std::shared_ptr<GrayCommand> grayCommand;
     std::shared_ptr<BlurCommand> blurCommand;
+    std::shared_ptr<RotateCommand> rotateCommand;
 
     std::shared_ptr<QImage> image;
     std::shared_ptr<ICommandNotification> updateNotification;

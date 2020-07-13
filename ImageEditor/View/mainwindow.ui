@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>840</width>
-    <height>594</height>
+    <width>1200</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>840</width>
+     <width>1200</width>
      <height>23</height>
     </rect>
    </property>
@@ -41,6 +41,18 @@
     <property name="title">
      <string>Basic</string>
     </property>
+    <widget class="QMenu" name="menuRotate">
+     <property name="title">
+      <string>Rotate</string>
+     </property>
+     <addaction name="actionRotate_90"/>
+     <addaction name="actionRotate_270"/>
+     <addaction name="actionRotate_180"/>
+    </widget>
+    <addaction name="actionCut"/>
+    <addaction name="menuRotate"/>
+    <addaction name="actionZoomIn"/>
+    <addaction name="actionZoomOut"/>
    </widget>
    <widget class="QMenu" name="menuFilter">
     <property name="title">
@@ -83,6 +95,36 @@
   <action name="actionSharp">
    <property name="text">
     <string>Sharp</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionZoomOut">
+   <property name="text">
+    <string>ZoomOut</string>
+   </property>
+  </action>
+  <action name="actionRotate_90">
+   <property name="text">
+    <string>Rotate 90°</string>
+   </property>
+  </action>
+  <action name="actionRotate_270">
+   <property name="text">
+    <string>Rotate -90°</string>
+   </property>
+  </action>
+  <action name="actionRotate_180">
+   <property name="text">
+    <string>Rotate 180°</string>
+   </property>
+  </action>
+  <action name="actionZoomIn">
+   <property name="text">
+    <string>ZoomIn</string>
    </property>
   </action>
  </widget>

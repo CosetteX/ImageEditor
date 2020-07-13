@@ -16,6 +16,7 @@ public:
     void Sharp();
     void Gray();
     void Blur(int ksize, int anchor);
+    void Rotate(int angle);
 
     void Update();
     cv::Mat GetImage();

@@ -47,6 +47,17 @@ void ImageModel::Blur(int ksize, int anchor)
     Update();
 }
 
+void ImageModel::Rotate(int angle)
+{
+    if (angle == 90)
+        rotate(currentImage, currentImage, ROTATE_90_CLOCKWISE);
+    else if (angle == -90)
+        rotate(currentImage, currentImage, ROTATE_90_COUNTERCLOCKWISE);
+    else if (angle == 180)
+        rotate(currentImage, currentImage, ROTATE_180);
+    Update();
+}
+
 void ImageModel::Update()
 {
     Fire_OnCommandComplete("Update", true);   // 应该避免使用字符串常量

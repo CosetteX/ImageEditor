@@ -20,8 +20,20 @@ std::shared_ptr<ICommandNotification> View::GetUpdateNotification()
 
 void View::OpenFile(const QString &fileName)
 {
+    currentFileName = fileName;
     openFileCommand->SetParameter(make_shared<StringParameter>(fileName.toLocal8Bit().toStdString()));
     openFileCommand->Exec();
+}
+
+void View::SaveFile()
+{
+    SaveFile(currentFileName);
+}
+
+void View::SaveFile(const QString &fileName)
+{
+    saveFileCommand->SetParameter(make_shared<StringParameter>(fileName.toLocal8Bit().toStdString()));
+    saveFileCommand->Exec();
 }
 
 void View::Gray()
@@ -40,9 +52,20 @@ void View::Sharp()
     sharpCommand->Exec();
 }
 
+void View::Rotate(int angle)
+{
+    rotateCommand->SetParameter(make_shared<BasicParameter<int>>(angle));
+    rotateCommand->Exec();
+}
+
 void View::SetOpenFileCommand(std::shared_ptr<ICommandBase> command)
 {
     openFileCommand = command;
+}
+
+void View::SetSaveFileCommand(std::shared_ptr<ICommandBase> command)
+{
+    saveFileCommand = command;
 }
 
 void View::SetGrayCommand(std::shared_ptr<ICommandBase> command)
@@ -60,6 +83,11 @@ void View::SetSharpCommand(std::shared_ptr<ICommandBase> command)
     sharpCommand = command;
 }
 
+void View::SetRotateCommand(std::shared_ptr<ICommandBase> command)
+{
+    rotateCommand = command;
+}
+
 void View::SetImage(std::shared_ptr<QImage> img)
 {
     image = img;
@@ -69,5 +97,6 @@ void View::UpdateImage()
 {
     scene()->clear();
 
-    scene()->addPixmap(QPixmap::fromImage(*image).scaled(size() - QSize(2, 2), Qt::KeepAspectRatio));
+//    scene()->addPixmap(QPixmap::fromImage(*image).scaled(size() - QSize(2, 2), Qt::KeepAspectRatio));
+    scene()->addPixmap(QPixmap::fromImage(*image));
 }

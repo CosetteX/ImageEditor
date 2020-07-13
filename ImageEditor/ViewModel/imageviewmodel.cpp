@@ -12,6 +12,7 @@ ImageViewModel::ImageViewModel()
     , sharpCommand(new SharpCommand(this))
     , grayCommand(new GrayCommand(this))
     , blurCommand(new BlurCommand(this))
+    , rotateCommand(new RotateCommand(this))
     , image(new QImage)
     , updateNotification(new UpdateViewModelNotification(this))
 {
@@ -45,6 +46,11 @@ std::shared_ptr<ICommandBase> ImageViewModel::GetGrayCommand()
 std::shared_ptr<ICommandBase> ImageViewModel::GetBlurCommand()
 {
     return static_pointer_cast<ICommandBase>(blurCommand);
+}
+
+std::shared_ptr<ICommandBase> ImageViewModel::GetRotateCommand()
+{
+    return static_pointer_cast<ICommandBase>(rotateCommand);
 }
 
 std::shared_ptr<QImage> ImageViewModel::GetImage()
@@ -82,6 +88,11 @@ void ImageViewModel::ExecGrayCommand()
 void ImageViewModel::ExecBlurCommand(int ksize, int anchor)
 {
     imageModel->Blur(ksize, anchor);
+}
+
+void ImageViewModel::ExecRotateCommand(int angle)
+{
+    imageModel->Rotate(angle);
 }
 
 void ImageViewModel::UpdateImage()

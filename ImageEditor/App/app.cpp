@@ -16,9 +16,11 @@ App::App()
     // TODO: multiple view
     auto *view = window->GetCurrentView();
     view->SetOpenFileCommand(viewModel->GetOpenFileCommand());
+    view->SetSaveFileCommand(viewModel->GetSaveFileCommand());
     view->SetGrayCommand(viewModel->GetGrayCommand());
     view->SetBlurCommand(viewModel->GetBlurCommand());
     view->SetSharpCommand(viewModel->GetSharpCommand());
+    view->SetRotateCommand(viewModel->GetRotateCommand());
     view->SetImage(viewModel->GetImage());
 
     // Add notification

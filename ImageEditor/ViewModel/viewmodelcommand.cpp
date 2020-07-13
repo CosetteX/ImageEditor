@@ -37,3 +37,9 @@ void BlurCommand::Exec()
     auto param = GetParameter<BlurParameter>();
     viewModel->ExecBlurCommand(param->ksize, param->anchor);
 }
+
+void RotateCommand::Exec()
+{
+    int value = GetParameter<BasicParameter<int>>()->value;
+    viewModel->ExecRotateCommand(value);
+}

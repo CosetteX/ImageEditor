@@ -22,11 +22,21 @@ public:
 private slots:
     void on_actionOpen_File_triggered();
 
+    void on_actionSave_File_triggered();
+
+    void on_actionSave_As_triggered();
+
     void on_actionGray_triggered();
 
     void on_actionBlur_triggered();
 
     void on_actionSharp_triggered();
+
+    void on_actionRotate_90_triggered();
+
+    void on_actionRotate_270_triggered();
+
+    void on_actionRotate_180_triggered();
 
 private:
     Ui::MainWindow *ui;

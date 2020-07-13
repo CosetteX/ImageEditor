@@ -3,6 +3,24 @@
 
 #include "Common/etl.h"
 
+// FIXED: 用any会不会好点？
+//class IntParameter : public ICommandParameter
+//{
+//public:
+//    explicit IntParameter(int v) : value(v) {}
+
+//    int value;
+//};
+
+template <typename T>
+class BasicParameter : public ICommandParameter
+{
+public:
+    explicit BasicParameter(T v) : value(v) {}
+
+    T value;
+};
+
 class StringParameter : public ICommandParameter
 {
 public:
