@@ -17,12 +17,19 @@ public:
     void Gray();
     void Blur(int ksize, int anchor);
     void Rotate(int angle);
+    void Zoom(double sx, double sy);
+    void ZoomIn();
+    void ZoomOut();
+    void ResetZoom();
 
     void Update();
     cv::Mat GetImage();
+
 private:
+    bool zooming;
     cv::Mat currentImage;
     cv::Mat originImage;
+    cv::Mat interImage;
 };
 
 #endif // IMAGEMODEL_H

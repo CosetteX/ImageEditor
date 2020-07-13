@@ -3,15 +3,6 @@
 
 #include "Common/etl.h"
 
-// FIXED: 用any会不会好点？
-//class IntParameter : public ICommandParameter
-//{
-//public:
-//    explicit IntParameter(int v) : value(v) {}
-
-//    int value;
-//};
-
 template <typename T>
 class BasicParameter : public ICommandParameter
 {
@@ -37,5 +28,17 @@ public:
     int ksize;
     int anchor;
 };
+
+class ZoomParameter : public ICommandParameter
+{
+public:
+    explicit ZoomParameter(int flag) : sx(0), sy(0), flag(flag) {}
+    explicit ZoomParameter(double sx, double sy) : sx(sx), sy(sy), flag(0) {}
+
+    double sx;
+    double sy;
+    int flag;        // 0:Zoom 1:ZoomIn 2:ZoomOut
+};
+
 
 #endif // PARAMETER_H

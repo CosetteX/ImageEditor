@@ -62,4 +62,12 @@ public:
     virtual void Exec() override;
 };
 
+class ZoomCommand : public ViewModelCommand
+{
+public:
+    using ViewModelCommand::ViewModelCommand;
+
+    virtual void Exec() override;
+};
+
 #endif // VIEWMODELCOMMAND_H

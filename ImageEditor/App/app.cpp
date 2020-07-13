@@ -21,6 +21,7 @@ App::App()
     view->SetBlurCommand(viewModel->GetBlurCommand());
     view->SetSharpCommand(viewModel->GetSharpCommand());
     view->SetRotateCommand(viewModel->GetRotateCommand());
+    view->SetZoomCommand(viewModel->GetZoomCommand());
     view->SetImage(viewModel->GetImage());
 
     // Add notification

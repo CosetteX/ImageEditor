@@ -49,10 +49,10 @@
      <addaction name="actionRotate_270"/>
      <addaction name="actionRotate_180"/>
     </widget>
-    <addaction name="actionCut"/>
     <addaction name="menuRotate"/>
     <addaction name="actionZoomIn"/>
     <addaction name="actionZoomOut"/>
+    <addaction name="actionResetZoom"/>
    </widget>
    <widget class="QMenu" name="menuFilter">
     <property name="title">
@@ -125,6 +125,11 @@
   <action name="actionZoomIn">
    <property name="text">
     <string>ZoomIn</string>
+   </property>
+  </action>
+  <action name="actionResetZoom">
+   <property name="text">
+    <string>ResetZoom</string>
    </property>
   </action>
  </widget>

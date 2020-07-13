@@ -3,6 +3,7 @@
 #include "Parameter/parameter.h"
 
 #include <QGraphicsItem>
+#include <QDebug>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ View::View(QWidget *parent)
     , updateNotification(static_pointer_cast<ICommandNotification>(make_shared<UpdateViewNotification>(this)))
 {
     setScene(new QGraphicsScene(this));
+    setDragMode(ScrollHandDrag);   // 开启抓手模式
 }
 
 std::shared_ptr<ICommandNotification> View::GetUpdateNotification()
@@ -58,6 +60,24 @@ void View::Rotate(int angle)
     rotateCommand->Exec();
 }
 
+void View::ZoomIn()
+{
+    zoomCommand->SetParameter(make_shared<ZoomParameter>(1));
+    zoomCommand->Exec();
+}
+
+void View::ZoomOut()
+{
+    zoomCommand->SetParameter(make_shared<ZoomParameter>(2));
+    zoomCommand->Exec();
+}
+
+void View::ResetZoom()
+{
+    zoomCommand->SetParameter(make_shared<ZoomParameter>(3));
+    zoomCommand->Exec();
+}
+
 void View::SetOpenFileCommand(std::shared_ptr<ICommandBase> command)
 {
     openFileCommand = command;
@@ -88,6 +108,11 @@ void View::SetRotateCommand(std::shared_ptr<ICommandBase> command)
     rotateCommand = command;
 }
 
+void View::SetZoomCommand(std::shared_ptr<ICommandBase> command)
+{
+    zoomCommand = command;
+}
+
 void View::SetImage(std::shared_ptr<QImage> img)
 {
     image = img;
@@ -98,5 +123,10 @@ void View::UpdateImage()
     scene()->clear();
 
 //    scene()->addPixmap(QPixmap::fromImage(*image).scaled(size() - QSize(2, 2), Qt::KeepAspectRatio));
-    scene()->addPixmap(QPixmap::fromImage(*image));
+    auto item = scene()->addPixmap(QPixmap::fromImage(*image));
+
+    // 让图片总是居中显示
+    QPointF center = mapToScene(viewport()->rect().center());
+    QRectF boundingRect = item->boundingRect();
+    item->setPos(center.x() - boundingRect.width() / 2, center.y() - boundingRect.height() / 2);
 }

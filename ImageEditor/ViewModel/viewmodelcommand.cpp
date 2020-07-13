@@ -43,3 +43,17 @@ void RotateCommand::Exec()
     int value = GetParameter<BasicParameter<int>>()->value;
     viewModel->ExecRotateCommand(value);
 }
+
+void ZoomCommand::Exec()
+{
+    auto param = GetParameter<ZoomParameter>();
+
+    if (param->flag == 0)
+        viewModel->ExecZoomCommand(param->sx, param->sy);
+    else if (param->flag == 1)
+        viewModel->ExecZoomInCommand();
+    else if (param->flag == 2)
+        viewModel->ExecZoomOutCommand();
+    else if (param->flag == 3)
+        viewModel->ExecResetZoomCommand();
+}

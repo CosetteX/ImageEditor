@@ -74,3 +74,18 @@ void MainWindow::on_actionRotate_180_triggered()
 {
     GetCurrentView()->Rotate(180);
 }
+
+void MainWindow::on_actionZoomIn_triggered()
+{
+    GetCurrentView()->ZoomIn();
+}
+
+void MainWindow::on_actionZoomOut_triggered()
+{
+    GetCurrentView()->ZoomOut();
+}
+
+void MainWindow::on_actionResetZoom_triggered()
+{
+    GetCurrentView()->ResetZoom();
+}

@@ -38,6 +38,12 @@ private slots:
 
     void on_actionRotate_180_triggered();
 
+    void on_actionZoomIn_triggered();
+
+    void on_actionZoomOut_triggered();
+
+    void on_actionResetZoom_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

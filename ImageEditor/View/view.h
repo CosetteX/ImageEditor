@@ -21,6 +21,9 @@ public:
     void Blur();
     void Sharp();
     void Rotate(int angle);
+    void ZoomIn();
+    void ZoomOut();
+    void ResetZoom();
 
     void SetOpenFileCommand(std::shared_ptr<ICommandBase> command);
     void SetSaveFileCommand(std::shared_ptr<ICommandBase> command);
@@ -28,6 +31,7 @@ public:
     void SetBlurCommand(std::shared_ptr<ICommandBase> command);
     void SetSharpCommand(std::shared_ptr<ICommandBase> command);
     void SetRotateCommand(std::shared_ptr<ICommandBase> command);
+    void SetZoomCommand(std::shared_ptr<ICommandBase> command);
 
     void SetImage(std::shared_ptr<QImage> img);
     void UpdateImage();
@@ -41,6 +45,7 @@ private:
     std::shared_ptr<ICommandBase> grayCommand;
     std::shared_ptr<ICommandBase> blurCommand;
     std::shared_ptr<ICommandBase> rotateCommand;
+    std::shared_ptr<ICommandBase> zoomCommand;
 
     std::shared_ptr<QImage> image;
     std::shared_ptr<ICommandNotification> updateNotification;

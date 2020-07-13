@@ -13,6 +13,7 @@ ImageViewModel::ImageViewModel()
     , grayCommand(new GrayCommand(this))
     , blurCommand(new BlurCommand(this))
     , rotateCommand(new RotateCommand(this))
+    , zoomCommand(new ZoomCommand(this))
     , image(new QImage)
     , updateNotification(new UpdateViewModelNotification(this))
 {
@@ -51,6 +52,11 @@ std::shared_ptr<ICommandBase> ImageViewModel::GetBlurCommand()
 std::shared_ptr<ICommandBase> ImageViewModel::GetRotateCommand()
 {
     return static_pointer_cast<ICommandBase>(rotateCommand);
+}
+
+std::shared_ptr<ICommandBase> ImageViewModel::GetZoomCommand()
+{
+    return static_pointer_cast<ICommandBase>(zoomCommand);
 }
 
 std::shared_ptr<QImage> ImageViewModel::GetImage()
@@ -93,6 +99,26 @@ void ImageViewModel::ExecBlurCommand(int ksize, int anchor)
 void ImageViewModel::ExecRotateCommand(int angle)
 {
     imageModel->Rotate(angle);
+}
+
+void ImageViewModel::ExecZoomCommand(double sx, double sy)
+{
+    imageModel->Zoom(sx, sy);
+}
+
+void ImageViewModel::ExecZoomInCommand()
+{
+    imageModel->ZoomIn();
+}
+
+void ImageViewModel::ExecZoomOutCommand()
+{
+    imageModel->ZoomOut();
+}
+
+void ImageViewModel::ExecResetZoomCommand()
+{
+    imageModel->ResetZoom();
 }
 
 void ImageViewModel::UpdateImage()
